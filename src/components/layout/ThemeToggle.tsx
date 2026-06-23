@@ -1,33 +1,25 @@
 "use client";
 
-import { Monitor, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
-const options = [
-  { value: "light", label: "Light", icon: Sun },
-  { value: "dark", label: "Dark", icon: Moon },
-  { value: "system", label: "System", icon: Monitor },
-];
-
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+  const Icon = isDark ? Sun : Moon;
+
   return (
-    <div className="inline-flex rounded-md border border-slate-200 bg-white p-1 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-      {options.map(({ value, label, icon: Icon }) => (
-        <button
-          key={value}
-          type="button"
-          title={label}
-          onClick={() => setTheme(value)}
-          className={cn(
-            "grid h-8 w-9 place-items-center rounded-sm text-slate-500 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-white",
-            theme === value && "bg-slate-100 text-slate-950 dark:bg-neutral-800 dark:text-white",
-          )}
-        >
-          <Icon className="h-4 w-4" />
-        </button>
-      ))}
-    </div>
+    <button
+      type="button"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className={cn(
+        "group grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-teal-500/40 focus:ring-offset-2 focus:ring-offset-slate-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-slate-200 dark:hover:border-neutral-700 dark:hover:bg-neutral-900 dark:focus:ring-offset-neutral-950",
+      )}
+    >
+      <Icon className="h-4 w-4 transition duration-300 group-hover:rotate-12 group-active:scale-90" />
+    </button>
   );
 }

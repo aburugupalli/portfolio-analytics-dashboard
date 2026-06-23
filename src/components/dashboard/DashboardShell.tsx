@@ -75,13 +75,15 @@ export function DashboardShell() {
       <main className="min-h-screen">
         <AppHeader />
         <ResponsiveContainer className="py-10">
-          <div className="rounded-lg border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-            <UploadCloud className="mx-auto h-10 w-10 text-teal-600" />
-            <h1 className="mt-4 text-2xl font-semibold">Noch keine Portfolio-Daten</h1>
-            <p className="mt-2 text-slate-500">Lade eine Scalable Capital CSV hoch oder öffne die Demo.</p>
-            <div className="mt-6 flex justify-center gap-3">
-              <Link href="/" className="rounded-md bg-slate-950 px-4 py-3 text-sm font-semibold text-white dark:bg-white dark:text-slate-950">CSV hochladen</Link>
-              <Link href="/demo" className="rounded-md border border-slate-200 px-4 py-3 text-sm font-semibold dark:border-neutral-800">Demo laden</Link>
+          <div className="mx-auto max-w-xl rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-xl shadow-slate-200/60 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-black/20">
+            <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-teal-50 text-teal-700 dark:bg-teal-950/40 dark:text-teal-200">
+              <UploadCloud className="h-7 w-7" />
+            </div>
+            <h1 className="mt-5 text-3xl font-semibold tracking-normal">Import your first CSV</h1>
+            <p className="mx-auto mt-3 max-w-md leading-7 text-slate-500 dark:text-slate-400">Upload your Scalable Capital transaction history to create your personal portfolio analysis.</p>
+            <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link href="/" className="inline-flex min-h-11 items-center justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500/40 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">Upload CSV</Link>
+              <Link href="/demo" className="inline-flex min-h-11 items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-teal-500/40 dark:border-neutral-800 dark:bg-neutral-900 dark:text-slate-200 dark:hover:bg-neutral-800">View demo</Link>
             </div>
           </div>
         </ResponsiveContainer>

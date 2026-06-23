@@ -1,12 +1,38 @@
 import { CheckCircle2, FileText } from "lucide-react";
 
-export function UploadSummary({ files, transactionCount, duplicates }: { files: File[]; transactionCount: number; duplicates: number }) {
+export function UploadSummary({
+  files,
+  transactionCount,
+  duplicates,
+  ignoredCount = 0,
+  holdingsCount,
+}: {
+  files: File[];
+  transactionCount: number;
+  duplicates: number;
+  ignoredCount?: number;
+  holdingsCount?: number;
+}) {
   if (!files.length) return null;
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-100">
         <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-        {transactionCount} Transaktionen erkannt {duplicates ? `(${duplicates} Duplikate ignoriert)` : ""}
+        Upload ready
+      </div>
+      <div className="grid gap-2 sm:grid-cols-3">
+        <div className="rounded-md bg-slate-50 p-3 dark:bg-neutral-950">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Transactions</p>
+          <p className="mt-1 text-lg font-semibold number-tabular">{transactionCount}</p>
+        </div>
+        <div className="rounded-md bg-slate-50 p-3 dark:bg-neutral-950">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Ignored</p>
+          <p className="mt-1 text-lg font-semibold number-tabular">{ignoredCount + duplicates}</p>
+        </div>
+        <div className="rounded-md bg-slate-50 p-3 dark:bg-neutral-950">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Holdings</p>
+          <p className="mt-1 text-lg font-semibold number-tabular">{holdingsCount ?? "N/A"}</p>
+        </div>
       </div>
       <div className="max-h-40 space-y-2 overflow-auto">
         {files.map((file) => (
