@@ -73,15 +73,15 @@ export default function Home() {
       </div>
 
       <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl dark:border-neutral-800/90 dark:bg-neutral-950/80">
-        <div className={`${pageContainer} flex min-h-16 items-center justify-between gap-3`}>
-          <Link href="/" className="flex min-w-0 items-center gap-3 rounded-full focus:outline-none focus:ring-2 focus:ring-teal-500/40">
+        <nav aria-label="Primary" className={`${pageContainer} grid min-h-16 grid-cols-[1fr_auto] items-center gap-3 md:grid-cols-[1fr_auto_1fr]`}>
+          <Link href="/" className="flex min-w-0 items-center gap-3 justify-self-start rounded-full focus:outline-none focus:ring-2 focus:ring-teal-500/40">
             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-slate-950 text-white shadow-sm dark:bg-white dark:text-slate-950">
               <UploadCloud className="h-4 w-4" />
             </span>
             <span className="truncate text-sm font-semibold text-slate-950 dark:text-white">Portfolio Intelligence</span>
           </Link>
 
-          <nav aria-label="Landing sections" className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-1 justify-self-center md:flex">
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} className="rounded-full px-3 py-2 text-sm font-medium text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 focus:outline-none focus:ring-2 focus:ring-teal-500/40 dark:text-slate-400 dark:hover:bg-neutral-900 dark:hover:text-white">
                 {link.label}
@@ -90,10 +90,12 @@ export default function Home() {
             <Link href="/demo" className="rounded-full px-3 py-2 text-sm font-medium text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 focus:outline-none focus:ring-2 focus:ring-teal-500/40 dark:text-slate-400 dark:hover:bg-neutral-900 dark:hover:text-white">
               Demo
             </Link>
-          </nav>
+          </div>
 
-          <ThemeToggle />
-        </div>
+          <div className="justify-self-end md:col-start-3">
+            <ThemeToggle />
+          </div>
+        </nav>
         <nav aria-label="Landing sections mobile" className={`${pageContainer} flex gap-1 overflow-x-auto pb-3 md:hidden`}>
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} className="shrink-0 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-slate-300">
@@ -126,7 +128,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={`${pageContainer} pb-16`}>
+      <section id="upload" className={`${pageContainer} scroll-mt-28 pb-16`}>
         <div className="mx-auto w-full max-w-4xl">
           <CsvDropzone />
         </div>
