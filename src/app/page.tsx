@@ -62,13 +62,18 @@ const privacyItems = [
   "You control exports and local data",
 ];
 
+const pageContainer = "mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8";
+
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden">
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(to_right,rgba(15,23,42,0.055)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.055)_1px,transparent_1px)] bg-[size:44px_44px] opacity-50 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.055)_1px,transparent_1px)]" />
+    <main className="relative min-h-screen overflow-hidden bg-slate-50 text-slate-950 dark:bg-neutral-950 dark:text-white">
+      <div className="pointer-events-none fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-10%,rgba(20,184,166,0.13),transparent_34rem),radial-gradient(circle_at_85%_10%,rgba(59,130,246,0.09),transparent_30rem)] dark:bg-[radial-gradient(circle_at_50%_-10%,rgba(20,184,166,0.12),transparent_32rem),radial-gradient(circle_at_85%_10%,rgba(59,130,246,0.08),transparent_30rem)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.035)_1px,transparent_1px)] bg-[size:56px_56px] opacity-60 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] dark:opacity-45" />
+      </div>
 
       <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl dark:border-neutral-800/90 dark:bg-neutral-950/80">
-        <div className="mx-auto flex min-h-16 w-full max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+        <div className={`${pageContainer} flex min-h-16 items-center justify-between gap-3`}>
           <Link href="/" className="flex min-w-0 items-center gap-3 rounded-full focus:outline-none focus:ring-2 focus:ring-teal-500/40">
             <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-slate-950 text-white shadow-sm dark:bg-white dark:text-slate-950">
               <UploadCloud className="h-4 w-4" />
@@ -89,7 +94,7 @@ export default function Home() {
 
           <ThemeToggle />
         </div>
-        <nav aria-label="Landing sections mobile" className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4 pb-3 md:hidden">
+        <nav aria-label="Landing sections mobile" className={`${pageContainer} flex gap-1 overflow-x-auto pb-3 md:hidden`}>
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} className="shrink-0 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-slate-300">
               {link.label}
@@ -101,7 +106,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <section className="mx-auto flex w-full max-w-6xl flex-col items-center px-4 pb-10 pt-14 text-center sm:px-6 lg:px-8 lg:pt-20">
+      <section className={`${pageContainer} flex flex-col items-center pb-8 pt-14 text-center lg:pt-20`}>
         <div className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-white/75 px-3 py-1 text-sm font-medium text-teal-800 shadow-sm dark:border-teal-900/70 dark:bg-neutral-950/75 dark:text-teal-200">
           <LockKeyhole className="h-4 w-4" />
           Private, local-first portfolio analytics
@@ -121,12 +126,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-3xl px-4 pb-16 sm:px-6 lg:px-8">
-        <CsvDropzone />
+      <section className={`${pageContainer} pb-16`}>
+        <div className="mx-auto w-full max-w-4xl">
+          <CsvDropzone />
+        </div>
       </section>
 
-      <section id="features" className="scroll-mt-24 px-4 py-10 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
+      <section id="features" className="scroll-mt-24 py-12">
+        <div className={pageContainer}>
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Features</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-normal text-slate-950 dark:text-white">Everything useful, nothing noisy.</h2>
@@ -145,8 +152,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="scroll-mt-24 px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
+      <section id="how-it-works" className="scroll-mt-24 py-12">
+        <div className={pageContainer}>
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">How it works</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-normal text-slate-950 dark:text-white">From export to analysis in three steps.</h2>
@@ -166,38 +173,42 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="privacy" className="scroll-mt-24 px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200/80 bg-white/85 p-6 shadow-xl shadow-slate-200/50 dark:border-neutral-800 dark:bg-neutral-950/85 dark:shadow-black/20 sm:p-8">
-          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-            <div className="max-w-xl">
-              <div className="grid h-12 w-12 place-items-center rounded-2xl bg-teal-50 text-teal-700 dark:bg-teal-950/40 dark:text-teal-200">
-                <ShieldCheck className="h-6 w-6" />
-              </div>
-              <h2 className="mt-5 text-3xl font-semibold tracking-normal text-slate-950 dark:text-white">Private by design</h2>
-              <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                Your CSV is processed locally in your browser and is not uploaded. For market data, only ticker symbols are requested through the market data API — never your full transaction history.
-              </p>
-            </div>
-            <div className="grid gap-3 text-sm">
-              {privacyItems.map((item) => (
-                <div key={item} className="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-slate-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-slate-200">
-                  <CheckCircle2 className="h-4 w-4 text-teal-600 dark:text-teal-300" />
-                  {item}
+      <section id="privacy" className="scroll-mt-24 py-12">
+        <div className={pageContainer}>
+          <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200/80 bg-white/85 p-6 shadow-xl shadow-slate-200/50 dark:border-neutral-800 dark:bg-neutral-950/85 dark:shadow-black/20 sm:p-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+              <div className="max-w-xl">
+                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-teal-50 text-teal-700 dark:bg-teal-950/40 dark:text-teal-200">
+                  <ShieldCheck className="h-6 w-6" />
                 </div>
-              ))}
+                <h2 className="mt-5 text-3xl font-semibold tracking-normal text-slate-950 dark:text-white">Private by design</h2>
+                <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                  Your CSV is processed locally in your browser and is not uploaded. For market data, only ticker symbols are requested through the market data API — never your full transaction history.
+                </p>
+              </div>
+              <div className="grid gap-3 text-sm">
+                {privacyItems.map((item) => (
+                  <div key={item} className="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-slate-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-slate-200">
+                    <CheckCircle2 className="h-4 w-4 text-teal-600 dark:text-teal-300" />
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-14 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200/80 bg-slate-950 p-6 text-center text-white shadow-xl shadow-slate-300/40 dark:border-neutral-800 dark:bg-white dark:text-slate-950 dark:shadow-black/20 sm:p-8">
-          <Database className="mx-auto h-8 w-8 opacity-80" />
-          <h2 className="mt-4 text-2xl font-semibold tracking-normal">No CSV right now?</h2>
-          <p className="mt-2 text-sm text-slate-300 dark:text-slate-600">Open an anonymized portfolio and explore the dashboard flow.</p>
-          <Link href="/demo" className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-white/50 dark:bg-slate-950 dark:text-white dark:hover:bg-slate-800">
-            View demo dashboard <ArrowRight className="h-4 w-4" />
-          </Link>
+      <section className="py-14">
+        <div className={pageContainer}>
+          <div className="mx-auto max-w-4xl rounded-3xl border border-slate-200/80 bg-slate-950 p-6 text-center text-white shadow-xl shadow-slate-300/40 dark:border-neutral-800 dark:bg-white dark:text-slate-950 dark:shadow-black/20 sm:p-8">
+            <Database className="mx-auto h-8 w-8 opacity-80" />
+            <h2 className="mt-4 text-2xl font-semibold tracking-normal">No CSV right now?</h2>
+            <p className="mt-2 text-sm text-slate-300 dark:text-slate-600">Open an anonymized portfolio and explore the dashboard flow.</p>
+            <Link href="/demo" className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-white/50 dark:bg-slate-950 dark:text-white dark:hover:bg-slate-800">
+              View demo dashboard <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
     </main>

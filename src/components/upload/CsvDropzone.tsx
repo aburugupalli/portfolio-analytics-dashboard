@@ -98,10 +98,10 @@ export function CsvDropzone() {
           <p className="mx-auto mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
             or browse files to start your local portfolio analysis.
           </p>
-          <button type="button" className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500/40 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
+          <span className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500/40 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200">
             <UploadCloud className="h-4 w-4" />
             Browse CSV
-          </button>
+          </span>
           <input ref={inputRef} className="sr-only" type="file" accept=".csv,text/csv" multiple onChange={(event) => event.target.files && void handleFiles(event.target.files)} />
           <p className="mt-4 text-xs text-slate-500 dark:text-slate-400">Supports .csv files and multiple broker exports.</p>
         </div>
